@@ -18,8 +18,16 @@ h1 {
 }
 
 .tab {
-    font-size: 15px;
+    font-size: 10px;
+    
+}
+
+.buttonStyle {
+    font-size: 20px;
+    color:#FFCB05;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    background-color: #3D7DCA;
     text-align: center;
     padding: 30px 30px;
     display: inline;

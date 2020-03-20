@@ -32,7 +32,7 @@ let image = document.querySelector(".pokeImage");
 for (let i = 0; i < pokemon.length; i++){
     let button = document.createElement("button");
     pokemonDivs.appendChild(button);
-    button.classList = "more-info";
+    button.classList = "buttonStyle";
     button.innerHTML = pokemon[i].name;
     let biography = document.createElement("biography")
     biography.innerText = pokemon[i].bio;
