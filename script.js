@@ -2,7 +2,8 @@ let pokemon = [
         {
           name: "Bulbasaur",
           bio: "Bulbasaur resembles a small, squatting dinosaur that walks on four legs, but bears three claws on each of its feet and has no tail. It also has large, red eyes and very sharp teeth. Its skin is a light, turquoise color with dark, green spots. It has three claws on all four of its legs. Its most notable feature, however, is the aforementioned bulb on its back, which according to its entry in the Pokédex, was planted there at birth. Bulbasaur has a 'bulb' on its back that grows steadily larger as it matures. This bulb contains a seed which uses photosynthesis to supply Bulbasaur with energy. Its bulb is also used to store the energy that the seed absorbs, which can be used when it is necessary. It is assumed that when a Bulbasaur collects enough energy in its bulb, it will evolve into an Ivysaur. Bulbasaur often rests in bright places so its bulb can absorb sunlight. It can be seen napping in bright sunlight. While it sleeps, the seed on its back catches the rays and uses the energy to grow.",
-          url: "https://pokeapi.co/api/v2/pokemon/1"
+          url: "https://pokeapi.co/api/v2/pokemon/1",
+          ability2: "https://pokeapi.co/api/v2/ability/65/"
 
         },
         {
@@ -32,10 +33,15 @@ let image = document.querySelector(".pokeImage");
 for (let i = 0; i < pokemon.length; i++){
     let button = document.createElement("button");
     pokemonDivs.appendChild(button);
+    
     button.classList = "buttonStyle";
     button.innerHTML = pokemon[i].name;
+   
     let biography = document.createElement("biography")
     biography.innerText = pokemon[i].bio;
+    
+    let ability2 = document.createElement("abilities");
+    ability2.innerText = pokemon[i].ability2;
 
 
 let showPokemon = function (e){
@@ -46,8 +52,15 @@ let showPokemon = function (e){
         image.setAttribute("src", res.sprites.front_default)
     })
     .catch(err => console.log("Oops! Pokeball unavailable. Try again!", err));
-    pokeText.textContent = biography.innerText
-
+    pokeText.textContent = biography.innerText;
+    
+    fetch(pokemon[i].ability2)
+    .then(res2 => res2.json())
+    .then(res2 => {
+        pokeText.appendChild(res2.name);
+    })
+    .catch(err => console.log("Oops! Pokeball unavailable. Try again!", err));
+    
 }
 
 button.addEventListener("click", showPokemon)
