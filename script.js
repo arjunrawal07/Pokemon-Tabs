@@ -3,6 +3,7 @@ let pokemon = [
           name: "Bulbasaur",
           bio: "Bulbasaur resembles a small, squatting dinosaur that walks on four legs, but bears three claws on each of its feet and has no tail. It also has large, red eyes and very sharp teeth. Its skin is a light, turquoise color with dark, green spots. It has three claws on all four of its legs. Its most notable feature, however, is the aforementioned bulb on its back, which according to its entry in the Pokédex, was planted there at birth. Bulbasaur has a 'bulb' on its back that grows steadily larger as it matures. This bulb contains a seed which uses photosynthesis to supply Bulbasaur with energy. Its bulb is also used to store the energy that the seed absorbs, which can be used when it is necessary. It is assumed that when a Bulbasaur collects enough energy in its bulb, it will evolve into an Ivysaur. Bulbasaur often rests in bright places so its bulb can absorb sunlight. It can be seen napping in bright sunlight. While it sleeps, the seed on its back catches the rays and uses the energy to grow.",
           url: "https://pokeapi.co/api/v2/pokemon/1",
+          ability1: "https://pokeapi.co/api/v2/ability/34/",
           ability2: "https://pokeapi.co/api/v2/ability/65/"
 
         },
@@ -29,6 +30,7 @@ let pokemon = [
 let pokemonDivs = document.querySelector(".tab");
 let pokeText = document.querySelector(".pokeText")
 let image = document.querySelector(".pokeImage");
+let stats = document.querySelector(".stats")
 
 for (let i = 0; i < pokemon.length; i++){
     let button = document.createElement("button");
@@ -40,7 +42,10 @@ for (let i = 0; i < pokemon.length; i++){
     let biography = document.createElement("biography")
     biography.innerText = pokemon[i].bio;
     
-    let ability2 = document.createElement("abilities");
+    let ability1 = document.createElement("ability1")
+    ability1.innerText = pokemon[i].ability1;
+
+    let ability2 = document.createElement("ability2");
     ability2.innerText = pokemon[i].ability2;
 
 
@@ -54,14 +59,22 @@ let showPokemon = function (e){
     .catch(err => console.log("Oops! Pokeball unavailable. Try again!", err));
     pokeText.textContent = biography.innerText;
     
-    fetch(pokemon[i].ability2)
-    .then(res2 => res2.json())
-    .then(res2 => {
-        pokeText.appendChild(res2.name);
+    fetch(pokemon[i].ability1)
+    .then(res1 => res1.json())
+    .then(res1 => {   
+        stats.textContent = res1.name;
     })
     .catch(err => console.log("Oops! Pokeball unavailable. Try again!", err));
-    
+
+    fetch(pokemon[i].ability2)
+    .then(res2 => res2.json())
+    .then(res2 => {   
+        ability2.innerText = res2.name;
+    })
+    .catch(err => console.log("Oops! Pokeball unavailable. Try again!", err));
+    stats.appendChild(ability2.innerText);
 }
+
 
 button.addEventListener("click", showPokemon)
 
