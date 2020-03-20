@@ -1,34 +1,23 @@
-const baseURL = "https://pokeapi.co/api/v2/";
+const baseURL = "https://pokeapi.co/api/v2/pokemon/1";
 
-let tab1 = document.querySelector(".tab1");
+let bulbasaur = document.querySelector(".buttonB");
 
+let image = document.querySelector(".pokeImage");
+
+let h1 = document.querySelector("h1");
 
 let showPokemon = (e) => {
-    let inputValue = e.target.elements[0].value
-    let fullURL = `${baseURL}pokemon/${inputValue}`;
 
-fetch(fullURL)
+fetch(baseURL)
     .then(res => res.json())
     .then(res => {
-        let grabMainBox = document.getElementsByClassName(".mainbox");
-        let pokeImg = document.querySelector(".image");
-        pokeImg.setAttribute("src", res[0].url)
-        grabMainBox.appendChild(pokeImg);
+        console.log("success",res)
+        image.setAttribute("src", res.sprites.front_default)
+        h1.appendChild(image);
     })
     
     .catch(err => console.log("Oops! Pokeball unavailable. Try again!", err));
 
 
 }
-
-    // fetch(fullURL)
-    //     .then(res => res.json())
-    //     .then(res => {
-    //         let grabBody = document.querySelector('body')
-    //         let createHeader = document.createElement('h1')
-
-    //         createHeader.innerHTML = res.name
-    //         grabBody.appendChild(createHeader)
-    //     })
-
-tab1.addEventListener("click", showPokemon)
+bulbasaur.addEventListener("click", showPokemon)
