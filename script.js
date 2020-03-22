@@ -26,14 +26,27 @@ let pokemon = [
 ];
 //Bios borrowed from: https://pokemon.fandom.com/wiki/
 
-let pokemonDivs = document.querySelector(".tab");
+let pokemonDivs = document.querySelector("h1");
 let pokeText = document.querySelector(".pokeText");
 let image = document.querySelector(".pokeImage");
+
 let primaryAbility1 = document.querySelector(".ability1");
 let primaryAbility2 = document.querySelector(".ability2");
+
 let primaryMove1 = document.querySelector(".move1");
 let primaryMove2 = document.querySelector(".move2");
+
 let image2 = document.querySelector(".pokeImage2");
+
+let myOverFunction = function(e) {
+  e.preventDefault();
+  pokemonDivs[i].style.opacity = 0.2;
+};
+
+let onMouseOut = function(e) {
+  e.preventDefault();
+  pokemonDivs[i].style.opacity = 1.0;
+};
 
 for (let i = 0; i < pokemon.length; i++) {
   let button = document.createElement("button");
@@ -44,16 +57,6 @@ for (let i = 0; i < pokemon.length; i++) {
 
   let biography = document.createElement("biography");
   biography.innerText = pokemon[i].bio;
-
-  let myOverFunction = function(e) {
-    e.preventDefault();
-    pokemonDivs[i].style.opacity = 0.2;
-  };
-
-  //   let onMouseOut = function(e) {
-  //     e.preventDefault();
-  //     pokemonDivs[i].style.opacity = 1.0;
-  //   };
 
   let showPokemon = function(e) {
     e.preventDefault();
