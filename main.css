@@ -9,7 +9,7 @@
 
 .mainbox {
   display: grid;
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-rows: repeat(4, 1fr);
   grid-template-columns: repeat(10, 1fr);
   border: 2px solid blue;
   background-color: lightcoral;
@@ -24,7 +24,7 @@ h1 {
   color: #ffcb05;
   margin: 0px;
   padding: 0px;
-  height: 30%;
+  height: 50%;
 }
 
 .maintext {
@@ -37,6 +37,7 @@ h1 {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin: 0px;
 }
 
 h2 {
@@ -44,23 +45,6 @@ h2 {
   font-size: 50px;
   text-align: center;
   padding: 50px;
-}
-
-/* .tab {
-  color: #ffcb05;
-  display: inline-block;
-  padding: 0px;
-  margin: 0px;
-  font-size: 20px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-content: space-around;
-  align-items: center;
-} */
-
-.tab button :hover {
-  opacity: 0.2;
 }
 
 .buttonStyle {
@@ -72,7 +56,8 @@ h2 {
   font-weight: bold;
   background-color: #3d7dca;
   text-align: center;
-  border: none;
+  padding: 20px;
+  margin: 10px;
 }
 
 .image {

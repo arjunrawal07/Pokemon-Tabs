@@ -35,18 +35,10 @@ let primaryAbility2 = document.querySelector(".ability2");
 
 let primaryMove1 = document.querySelector(".move1");
 let primaryMove2 = document.querySelector(".move2");
+let primaryMove3 = document.querySelector(".move3");
+let primaryMove4 = document.querySelector(".move4");
 
 let image2 = document.querySelector(".pokeImage2");
-
-let myOverFunction = function(e) {
-  e.preventDefault();
-  pokemonDivs[i].style.opacity = 0.2;
-};
-
-let onMouseOut = function(e) {
-  e.preventDefault();
-  pokemonDivs[i].style.opacity = 1.0;
-};
 
 for (let i = 0; i < pokemon.length; i++) {
   let button = document.createElement("button");
@@ -68,13 +60,13 @@ for (let i = 0; i < pokemon.length; i++) {
         primaryAbility2.textContent = res.abilities[1].ability.name;
         primaryMove1.textContent = res.moves[0].move.name;
         primaryMove2.textContent = res.moves[1].move.name;
+        primaryMove3.textContent = res.moves[2].move.name;
+        primaryMove4.textContent = res.moves[3].move.name;
         image2.setAttribute("src", res.sprites.back_default);
       })
       .catch(err => console.log("Oops! Pokeball unavailable. Try again!", err));
     pokeText.textContent = biography.innerText;
+    button.style.backgroundColor = "#003A70";
   };
-
-  pokemonDivs.addEventListener("mouseover", myOverFunction);
-  //   pokemonDivs.addEventListener("mouseout", onMouseOut);
   button.addEventListener("click", showPokemon);
 }
