@@ -1,6 +1,6 @@
-# Project-3-UI-Pattern
 
-## Pokémon Tabs = Gotta' Read Them All!
+
+# Pokémon Tabs - Gotta' Read Them All!
 
 Welcome to the Pokémon Tabs!
 
